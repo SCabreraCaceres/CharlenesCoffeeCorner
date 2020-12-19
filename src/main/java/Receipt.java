@@ -7,7 +7,8 @@ public class Receipt {
     private final List<Product> products = new ArrayList<>();
 
     public BigDecimal getTotalAmount() {
-        return products.get(0).getPrice();
+        return products.stream().map(Product::getPrice)
+                                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public void addProduct(Product product) {
