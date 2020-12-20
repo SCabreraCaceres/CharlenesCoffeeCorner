@@ -8,4 +8,6 @@ public abstract class Product {
     public void makeFree(){
         free = true;
     }
+
+    public abstract String getName();
 }

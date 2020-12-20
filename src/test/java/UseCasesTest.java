@@ -1,10 +1,18 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class UseCasesTest {
+
+    public static final String ITEM = "Item";
+    public static final String QTY = "Qty";
+    public static final String PRICE = "Price";
+    public static final String TOTAL = "Total";
+    public static final String TAX = "Tax";
+    public static final String SMALL_COFFEE = "Small Coffee";
 
     @Test
     @DisplayName("Use case 1")
@@ -101,6 +109,19 @@ public class UseCasesTest {
 
         assertEquals(BigDecimal.valueOf(8.45), receipt.getTotalAmount());
     }
-
     // TODO Implement test cases 3, 5, 6, 8, 9
+
+    @Test
+    void printsTicket(){
+        Receipt receipt = new Receipt();
+        SmallCoffee smallCoffee = new SmallCoffee();
+        receipt.addProduct(smallCoffee);
+        String text = receipt.printReceipt();
+        assertTrue(text.contains(ITEM));
+        assertTrue(text.contains(QTY));
+        assertTrue(text.contains(PRICE));
+        assertTrue(text.contains(TOTAL));
+        assertTrue(text.contains(TAX));
+        assertTrue(text.contains(SMALL_COFFEE));
+    }
 }
