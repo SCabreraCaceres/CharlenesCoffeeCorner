@@ -18,3 +18,6 @@ This project runs on Java 11 and need a Maven installation.
 
 1. A new client orders a small coffee with a bacon roll and an orange juice, he/her gets a receipt for 10.95 CHF,
    and a stamp card with one stamp.
+
+1. A new client orders a small coffee with extra milk, a bacon roll and an orange juice, he/her gets a receipt for 10.95 CHF,
+   and a stamp card with one stamp.

@@ -1,8 +1,9 @@
 import java.math.BigDecimal;
 
-public class OrangeJuice implements Product {
-    @Override
+public class OrangeJuice extends Beverage {
+
     public BigDecimal getPrice() {
         return BigDecimal.valueOf(3.95);
     }
+
 }
