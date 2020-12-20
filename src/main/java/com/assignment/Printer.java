@@ -1,3 +1,5 @@
+package com.assignment;
+
 import static java.lang.String.format;
 
 public class Printer {

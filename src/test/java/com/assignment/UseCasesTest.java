@@ -1,5 +1,12 @@
+package com.assignment;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.assignment.extra.ExtraMilk;
+import com.assignment.snacks.BaconRoll;
+import com.assignment.beverage.MediumCoffee;
+import com.assignment.beverage.OrangeJuice;
+import com.assignment.beverage.SmallCoffee;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,3 +1,5 @@
+package com.assignment.beverage;
+
 import java.math.BigDecimal;
 
 public class SmallCoffee extends Beverage {

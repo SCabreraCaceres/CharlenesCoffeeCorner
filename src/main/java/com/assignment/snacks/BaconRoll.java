@@ -1,3 +1,6 @@
+package com.assignment.snacks;
+
+import com.assignment.Product;
 import java.math.BigDecimal;
 
 public class BaconRoll extends Product {

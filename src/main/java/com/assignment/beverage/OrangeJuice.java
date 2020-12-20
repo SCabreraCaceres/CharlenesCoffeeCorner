@@ -1,3 +1,6 @@
+package com.assignment.beverage;
+
+import com.assignment.beverage.Beverage;
 import java.math.BigDecimal;
 
 public class OrangeJuice extends Beverage {

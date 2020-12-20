@@ -1,5 +1,10 @@
+package com.assignment;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.assignment.Printer;
+import com.assignment.Receipt;
+import com.assignment.beverage.SmallCoffee;
 import org.junit.jupiter.api.Test;
 
 class PrinterTest {
