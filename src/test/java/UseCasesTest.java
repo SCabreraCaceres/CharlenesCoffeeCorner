@@ -1,7 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -81,6 +80,26 @@ public class UseCasesTest {
         receipt.checkExtras();
 
         assertEquals(BigDecimal.valueOf(10.95), receipt.getTotalAmount());
+    }
+
+    @Test
+    @DisplayName("Use case 12")
+    void withExtraAndFourStamps(){
+        SmallCoffee smallCoffee = new SmallCoffee();
+        BaconRoll baconRoll = new BaconRoll();
+        OrangeJuice orangeJuice = new OrangeJuice();
+        ExtraMilk extraMilk = new ExtraMilk();
+        Receipt receipt = new Receipt();
+        receipt.addProduct(smallCoffee);
+        receipt.addProduct(baconRoll);
+        receipt.addProduct(orangeJuice);
+        receipt.addProduct(extraMilk);
+
+        receipt.checkExtras();
+        receipt.freeBeverage();
+        receipt.checkFreeBeverage();
+
+        assertEquals(BigDecimal.valueOf(8.45), receipt.getTotalAmount());
     }
 
     // TODO Implement test cases 3, 5, 6, 8, 9

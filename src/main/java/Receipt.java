@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Receipt {
     private final List<Product> products = new ArrayList<>();
+    private boolean freeBeverage = false;
 
     public BigDecimal getTotalAmount() {
         return products.stream()
@@ -16,7 +17,7 @@ public class Receipt {
     }
 
     public void addProduct(Product product) {
-        this.products.add(product);
+        products.add(product);
     }
 
     public void checkExtras() {
@@ -26,6 +27,19 @@ public class Receipt {
                     .min(comparing(Product::getPrice))
                     .ifPresent(Product::makeFree);
         }
+    }
+
+    public void checkFreeBeverage() {
+        if(freeBeverage) {
+            products.stream()
+                    .filter(product -> product instanceof Beverage)
+                    .min(comparing(Product::getPrice))
+                    .ifPresent(Product::makeFree);
+        }
+    }
+
+    public void freeBeverage(){
+        freeBeverage = true;
     }
 
     private boolean freeExtra() {
