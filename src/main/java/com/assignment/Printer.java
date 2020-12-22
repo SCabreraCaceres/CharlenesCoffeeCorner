@@ -3,17 +3,24 @@ package com.assignment;
 import static java.lang.String.format;
 
 public class Printer {
-    public static final int QUANTITY = 1; // TODO implement quantity logic
+    private static final int QUANTITY = 1;
+    private static final String CURRENCY = "CHF";
 
     public static String printReceipt(Receipt receipt) {
-        StringBuilder f = new StringBuilder(format("%-15s %5s %10s\n", "Item", "Qty", "Price"));
+        StringBuilder f = new StringBuilder(format("%-15s\n", "Thanks for visiting Charlene's Coffee Shop"));
+        f.append(format("%-15s\n", "********************************"));
+        f.append(format("%-15s %5s %10s\n", "Item", "Qty", "Price"));
         f.append(format("%-15s %5s %10s\n", "----", "---", "-----"));
         for (Product product : receipt.getProducts()) {
-            f.append(format("%-15.15s %5d %10.2f\n", product.getName(), QUANTITY, product.getPrice()));
+            f.append(format("%-15.15s %5d %10.2f %-15.15s\n", product.getName(), QUANTITY, product.getPrice(),
+                    showFreeItem(product)));
         }
-        f.append(format("%-15s %5s %10.2f\n", "Tax", "", 0.0)); // TODO add taxes logic
         f.append(format("%-15s %5s %10s\n", "", "", "-----"));
-        f.append(format("%-15s %5s %10.2f\n", "Total", "", receipt.getTotalAmount()));
+        f.append(format("%-15s %5s %10.2f %3s\n", "Total", "", receipt.getTotalAmount(), CURRENCY));
         return f.toString();
+    }
+
+    private static String showFreeItem(Product product){
+       return product.isFree() ? "**free item" : "";
     }
 }

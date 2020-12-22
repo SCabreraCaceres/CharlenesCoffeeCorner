@@ -12,4 +12,8 @@ public abstract class Product {
     }
 
     public abstract String getName();
+
+    public Boolean isFree(){
+        return free;
+    }
 }

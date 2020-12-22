@@ -1,6 +1,8 @@
 # Charlene's Coffee Corner
 
-This project runs on Java 11 and need a Maven installation.
+This project runs on Java 11 and needs a Maven installation.
+* To get Java 11 go to [Java Oracle](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) 
+* For downloading and installing Maven you can go to [Apache Maven web](https://maven.apache.org/download.cgi).
 
 # Use cases
 
@@ -21,9 +23,16 @@ This project runs on Java 11 and need a Maven installation.
    ... rest of cases
 
 1. A new client orders a small coffee with extra milk, a bacon roll and an orange juice, he/her gets a receipt for 10.95 CHF,
-   and a stamp card with one stamp.
+   and a stamp card with one stamp. (Free extra)
    ... other cases with other extras
    
 1. A returning client orders a small coffee with extra milk, a bacon roll and an orange juice. He has a stamp card
 with 4 stamps. He gets a receipt for 8.45 CHF. (Free extra + free beverage)
+1. A returning client orders a medium coffee, a small coffee with extra milk, a bacon roll and an orange juice. He has a stamp card
+with 4 stamps. He gets a receipt for 11.45 CHF. (Free extra + free beverage)
    ... other cases with free beverage
+   
+# Check output
+To see an example of a ticket you can run test com.assignment.PrinterTest.printsTicket. It should look like:
+
+![Printer test](ticket.png)

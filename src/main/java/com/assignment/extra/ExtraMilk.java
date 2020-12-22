@@ -13,6 +13,7 @@ public class ExtraMilk extends Product {
     public String getName() {
         return NAME;
     }
+
     public BigDecimal getPrice() {
         return PRICE;
     }
