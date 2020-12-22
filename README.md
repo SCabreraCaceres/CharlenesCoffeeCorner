@@ -4,6 +4,12 @@ This project runs on Java 11 and needs a Maven installation.
 * To get Java 11 go to [Java Oracle](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) 
 * For downloading and installing Maven you can go to [Apache Maven web](https://maven.apache.org/download.cgi).
 
+# Run tests
+As this project doesn't implement a main class yet, to see the tickets output you can run test 
+com.assignment.PrinterTest.printsTicket to see an example.
+In order to run all the tests you can use maven phase test `mvn test` from any terminal. Also, from you favourite IDE,
+for example if you use IntelliJ right click on \src\test\java and select "Run 'All tests' "
+
 # Use cases
 
 1. A new client orders a small coffee, he/her gets a receipt for 2.50 CHF, and a stamp card with one stamp. 
