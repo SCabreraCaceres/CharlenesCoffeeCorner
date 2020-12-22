@@ -17,20 +17,24 @@ public class UseCasesTest {
     @DisplayName("Use case 1")
     void buysSmallCoffeeNoExtrasGetsReceipt(){
         SmallCoffee smallCoffee = new SmallCoffee();
-        Receipt receipt = new Receipt();
-        receipt.addProduct(smallCoffee);
+        Order order = new Order();
+        order.addProduct(smallCoffee);
 
-        assertEquals(BigDecimal.valueOf(2.50), receipt.getTotalAmount());
+        order.sendOrder();
+
+        assertEquals(BigDecimal.valueOf(2.50), order.getTotalAmount());
     }
 
     @Test
     @DisplayName("Use case 2")
     void buysMediumCoffeeNoExtrasGetsReceipt(){
         MediumCoffee mediumCoffee = new MediumCoffee();
-        Receipt receipt = new Receipt();
-        receipt.addProduct(mediumCoffee);
+        Order order = new Order();
+        order.addProduct(mediumCoffee);
 
-        assertEquals(BigDecimal.valueOf(3), receipt.getTotalAmount());
+        order.sendOrder();
+
+        assertEquals(BigDecimal.valueOf(3), order.getTotalAmount());
     }
 
     @Test
@@ -38,11 +42,13 @@ public class UseCasesTest {
     void buysSmallCoffeeAndBaconRollGetsReceipt(){
         SmallCoffee smallCoffee = new SmallCoffee();
         BaconRoll baconRoll = new BaconRoll();
-        Receipt receipt = new Receipt();
-        receipt.addProduct(smallCoffee);
-        receipt.addProduct(baconRoll);
+        Order order = new Order();
+        order.addProduct(smallCoffee);
+        order.addProduct(baconRoll);
 
-        assertEquals(BigDecimal.valueOf(7.0), receipt.getTotalAmount());
+        order.sendOrder();
+
+        assertEquals(BigDecimal.valueOf(7.0), order.getTotalAmount());
     }
 
     @Test
@@ -50,11 +56,13 @@ public class UseCasesTest {
     void buysSmallCoffeeAndOrangeJuiceGetsReceipt(){
         SmallCoffee smallCoffee = new SmallCoffee();
         OrangeJuice orangeJuice = new OrangeJuice();
-        Receipt receipt = new Receipt();
-        receipt.addProduct(smallCoffee);
-        receipt.addProduct(orangeJuice);
+        Order order = new Order();
+        order.addProduct(smallCoffee);
+        order.addProduct(orangeJuice);
 
-        assertEquals(BigDecimal.valueOf(6.45), receipt.getTotalAmount());
+        order.sendOrder();
+
+        assertEquals(BigDecimal.valueOf(6.45), order.getTotalAmount());
     }
 
     @Test
@@ -63,50 +71,48 @@ public class UseCasesTest {
         SmallCoffee smallCoffee = new SmallCoffee();
         BaconRoll baconRoll = new BaconRoll();
         OrangeJuice orangeJuice = new OrangeJuice();
-        Receipt receipt = new Receipt();
-        receipt.addProduct(smallCoffee);
-        receipt.addProduct(baconRoll);
-        receipt.addProduct(orangeJuice);
+        Order order = new Order();
+        order.addProduct(smallCoffee);
+        order.addProduct(baconRoll);
+        order.addProduct(orangeJuice);
 
-        assertEquals(BigDecimal.valueOf(10.95), receipt.getTotalAmount());
+        order.sendOrder();
+
+        assertEquals(BigDecimal.valueOf(10.95), order.getTotalAmount());
     }
 
     @Test
     @DisplayName("Use case 11")
     void withExtra(){
-        SmallCoffee smallCoffee = new SmallCoffee();
-        BaconRoll baconRoll = new BaconRoll();
-        OrangeJuice orangeJuice = new OrangeJuice();
-        ExtraMilk extraMilk = new ExtraMilk();
-        Receipt receipt = new Receipt();
-        receipt.addProduct(smallCoffee);
-        receipt.addProduct(baconRoll);
-        receipt.addProduct(orangeJuice);
-        receipt.addProduct(extraMilk);
+        Order order = createOrder();
 
-        receipt.checkExtras();
+        order.sendOrder();
 
-        assertEquals(BigDecimal.valueOf(10.95), receipt.getTotalAmount());
+        assertEquals(BigDecimal.valueOf(10.95), order.getTotalAmount());
     }
 
     @Test
     @DisplayName("Use case 12")
     void withExtraAndFourStamps(){
+        Order order = createOrder();
+
+        order.addAFreeBeverageWithStampsCard();
+        order.sendOrder();
+
+        assertEquals(BigDecimal.valueOf(8.45), order.getTotalAmount());
+    }
+
+    private Order createOrder() {
         SmallCoffee smallCoffee = new SmallCoffee();
         BaconRoll baconRoll = new BaconRoll();
         OrangeJuice orangeJuice = new OrangeJuice();
         ExtraMilk extraMilk = new ExtraMilk();
-        Receipt receipt = new Receipt();
-        receipt.addProduct(smallCoffee);
-        receipt.addProduct(baconRoll);
-        receipt.addProduct(orangeJuice);
-        receipt.addProduct(extraMilk);
-
-        receipt.checkExtras();
-        receipt.freeBeverage();
-        receipt.checkFreeBeverage();
-
-        assertEquals(BigDecimal.valueOf(8.45), receipt.getTotalAmount());
+        Order order = new Order();
+        order.addProduct(smallCoffee);
+        order.addProduct(baconRoll);
+        order.addProduct(orangeJuice);
+        order.addProduct(extraMilk);
+        return order;
     }
     // TODO Implement test cases 3, 5, 6, 8, 9
 }

@@ -1,12 +1,14 @@
 # Charlene's Coffee Corner
 
-This project runs on Java 11 and needs a Maven installation.
+This project runs on Java 8 and needs a Maven installation.
 * To get Java 11 go to [Java Oracle](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) 
 * For downloading and installing Maven you can go to [Apache Maven web](https://maven.apache.org/download.cgi).
 
-# Run tests
-As this project doesn't implement a main class yet, to see the tickets output you can run test 
-com.assignment.PrinterTest.printsTicket to see an example.
+# Run app
+To run the application and see an example of a ticket run com.assignment.Application. It should look like:
+
+![Printer test](ticket.png)
+
 In order to run all the tests you can use maven phase test `mvn test` from any terminal. Also, from you favourite IDE,
 for example if you use IntelliJ right click on \src\test\java and select "Run 'All tests' "
 
@@ -37,8 +39,3 @@ with 4 stamps. He gets a receipt for 8.45 CHF. (Free extra + free beverage)
 1. A returning client orders a medium coffee, a small coffee with extra milk, a bacon roll and an orange juice. He has a stamp card
 with 4 stamps. He gets a receipt for 11.45 CHF. (Free extra + free beverage)
    ... other cases with free beverage
-   
-# Check output
-To see an example of a ticket you can run test com.assignment.PrinterTest.printsTicket. It should look like:
-
-![Printer test](ticket.png)

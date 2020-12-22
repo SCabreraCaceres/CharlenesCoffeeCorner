@@ -19,27 +19,34 @@ class PrinterTest {
 
     @Test
     void printsTicket(){
-        Receipt receipt = new Receipt();
-        SmallCoffee smallCoffee = new SmallCoffee();
-        MediumCoffee mediumCoffee = new MediumCoffee();
-        OrangeJuice orangeJuice = new OrangeJuice();
-        BaconRoll baconRoll = new BaconRoll();
-        ExtraMilk extraMilk = new ExtraMilk();
-        receipt.addProduct(smallCoffee);
-        receipt.addProduct(mediumCoffee);
-        receipt.addProduct(orangeJuice);
-        receipt.addProduct(baconRoll);
-        receipt.addProduct(extraMilk);
-        receipt.freeBeverage();
-        receipt.checkExtras();
-        receipt.checkFreeBeverage();
-        String printedReceipt = printReceipt(receipt);
+        Order order = createReceipt();
+
+        String printedReceipt = printReceipt(order);
+
         assertTrue(printedReceipt.contains(ITEM));
         assertTrue(printedReceipt.contains(QTY));
         assertTrue(printedReceipt.contains(PRICE));
         assertTrue(printedReceipt.contains(TOTAL));
         assertTrue(printedReceipt.contains(SMALL_COFFEE));
-        System.out.println(printedReceipt);
+    }
+
+    private Order createReceipt() {
+        Order order = new Order();
+        SmallCoffee smallCoffee = new SmallCoffee();
+        MediumCoffee mediumCoffee = new MediumCoffee();
+        OrangeJuice orangeJuice = new OrangeJuice();
+        BaconRoll baconRoll = new BaconRoll();
+        ExtraMilk extraMilk = new ExtraMilk();
+        order.addProduct(smallCoffee);
+        order.addProduct(mediumCoffee);
+        order.addProduct(orangeJuice);
+        order.addProduct(baconRoll);
+        order.addProduct(extraMilk);
+
+        order.addAFreeBeverageWithStampsCard();
+        order.sendOrder();
+
+        return order;
     }
 
 }

@@ -9,26 +9,37 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Receipt {
+public class Order {
     private final List<Product> products = new ArrayList<>();
+    private BigDecimal amount;
     private boolean freeBeverage = false;
 
     public List<Product> getProducts() {
         return products;
     }
 
-    public BigDecimal getTotalAmount() {
-        return products.stream()
+    public void sendOrder() {
+        checkFreeExtra();
+        checkFreeBeverage();
+        amount = products.stream()
                 .filter(product -> !product.free)
                 .map(Product::getPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal getTotalAmount() {
+        return amount;
     }
 
     public void addProduct(Product product) {
         products.add(product);
     }
 
-    public void checkExtras() {
+    public void addAFreeBeverageWithStampsCard(){
+        freeBeverage = true;
+    }
+
+    private void checkFreeExtra() {
         if(freeExtra()) {
             products.stream()
                     .filter(product -> product instanceof ExtraMilk)
@@ -37,17 +48,13 @@ public class Receipt {
         }
     }
 
-    public void checkFreeBeverage() {
+    private void checkFreeBeverage() {
         if(freeBeverage) {
             products.stream()
                     .filter(product -> product instanceof Beverage)
                     .min(comparing(Product::getPrice))
                     .ifPresent(Product::makeFree);
         }
-    }
-
-    public void freeBeverage(){
-        freeBeverage = true;
     }
 
     private boolean freeExtra() {
